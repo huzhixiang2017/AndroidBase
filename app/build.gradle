@@ -1,23 +1,110 @@
 apply plugin: 'com.android.application'
 
+
+// 原写法：compileSdkVersion rootProject.ext.android.compileSdkVersion
+def ext = rootProject.ext
+def config = rootProject.ext.android  //默认配置信息
+def support = rootProject.ext.support //第三方依赖库
+
+
+
 android {
-    compileSdkVersion 29                //当前编译版本号
-    buildToolsVersion "29.0.2"
+    compileSdkVersion config.compileSdkVersion
+    buildToolsVersion config.buildToolsVersion
+
+    /**  默认配置信息 */
     defaultConfig {
-        applicationId "com.java.base"   //该项目包名
-        minSdkVersion 19                //最小API支持
-        targetSdkVersion 29             //最大API支持
-        versionCode 1
-        versionName "1.0"
+        applicationId config.applicationId
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName config.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        // proguard-rules.pro 中进行判断哪些类不用混淆
+        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
+
+    /**  APK签名 https://www.jianshu.com/p/a1f8e5896aa2  */
+    signingConfigs {
+
+        // 路劲/app/gradle.properties 文件内配置秘钥信息
+        release { //正式环境
+            storeFile file(StoreFile)
+            storePassword StorePassword
+            keyAlias KeyAlias
+            keyPassword KeyPassword
+        }
+        debug {   //测试环境
+            storeFile file(StoreFile)
+            storePassword StorePassword
+            keyAlias KeyAlias
+            keyPassword KeyPassword
+        }
+    }
+
+    /**  代码混淆 + 打包配置  */
     buildTypes {
-        release {
+
+        release { //正式环境
+            shrinkResources true // 移除无用的资源文件
+            zipAlignEnabled true // ZipAlign优化 https://blog.csdn.net/hello_1995/article/details/52870573
+            minifyEnabled true   // 代码混淆  https://blog.csdn.net/youyu_torch/article/details/78775100
+            signingConfig signingConfigs.release  // 正式环境签名
+            buildConfigField "String", "BUGLY_ID", "\"请自行替换 Bugly 上面的 AppID\""  // Bug管理工具之Bugly的使用 服务端替换BuglyId
+        }
+        debug { //测试环境
+            shrinkResources false
+            zipAlignEnabled false
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+            buildConfigField "String", "BUGLY_ID", "\"请自行替换 Bugly 上面的 AppID\""  // 开发环境下的 BuglyId
+        }
+    }
+
+    /**  生成APK，执行配置,在Build Variants视窗内切换渠道 */
+    flavorDimensions "default"  // 默认渠道名，同时可以切换成release等下面的渠道，生成的APK路径：/build/outputs/apk/..
+    productFlavors {            // 友盟多渠道打包
+        tencent {}  // 应用宝
+        baidu {}    // 百度
+        xiaomi {}   // 小米
+        huawei {}   // 华为
+
+        Beta {}     //测试版
+        Alpha {}    //首发（第一版）
+        Develop {}  //开发版
+        Demo {}     //演示版 __ 括号内提取 manifestPlaceholders = [UMENG_CHANNEL_VALUE: "Develop"]
+
+        productFlavors.all { flavor ->
+            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+        }
+
+        applicationVariants.all { variant ->
+            variant.outputs.all { output ->
+                def appName = "AndroidBase"
+                if (variant.buildType.name == 'debug') {
+                    outputFileName = appName + '_v' + versionName + '_' + variant.buildType.name + '.apk'
+                } else {
+                    outputFileName  = appName + '_v' + versionName + '_' + new Date().format("yyyyMMdd") + '_' + variant.productFlavors[0].name + '_' + variant.buildType.name + '.apk'
+                }
+            }
+
+            /**  这个没搞明白改天再研究，先搞简单的 */
+            // AndroidManifest 输出配置
+//            variant.outputs[0].processManifest.doLast {
+//                def manifestFile = "${manifestOutputDirectory}/AndroidManifest.xml"
+//                def updatedContent = new File(manifestFile).getText('UTF-8')
+//                        .replaceAll("UMENG_APPKEY_VALUE", "5cb16d93570df399fd0014e2") // 友盟 AppKey
+//                        .replaceAll("QQ_APPID_VALUE", "100424468") // QQ AppId
+//                        .replaceAll("QQ_APPKEY_VALUE", "c7394704798a158208a74ab60104f0ba") // QQ Key
+//                        .replaceAll("WX_APPID_VALUE", "wxdc1e388c3822c80b") // 微信 AppId
+//                        .replaceAll("WX_APPKEY_VALUE", "3baf1193c85774b3fd9d18447d76cab0") // 微信 Key
+//                new File(manifestFile).write(updatedContent, 'UTF-8')
+//            }
+
         }
     }
 }
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -26,4 +113,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
 }

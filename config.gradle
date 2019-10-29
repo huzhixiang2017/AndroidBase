@@ -1,0 +1,28 @@
+
+/** 创建config.gradle，用于统一管理项目的依赖库 build.gradle + 所有模块 + 所有libs 下的配置和依赖  */
+
+def supportVersion = "29.0.2"
+
+
+
+// ext 是什么?  https://www.jianshu.com/p/207c9f6f68c2
+ext {
+    android = [//配置
+            applicationId    : "com.java.base",//当前SDK的编译版本
+            versionName      : "1.0",
+            versionCode      : 1,
+            compileSdkVersion: 29,//当前编译版本号
+            minSdkVersion    : 19,//最小API支持
+            targetSdkVersion : 29,//最大API支持
+            //构建工具的版本,在SDK Manager中安装选择版本，buildToolsVersion的版本需要>=CompileSdkVersion;高版本的build-tools 可以构建低版本编译的android程序；
+            buildToolsVersion:"29.0.2",
+    ]
+
+
+    support = [//第三方依赖
+
+    ]
+
+}
+
+
