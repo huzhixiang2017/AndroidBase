@@ -78,7 +78,7 @@ public class LocationUtils {
      * @param listener    位置刷新的回调接口
      * @return {@code true}: 初始化成功<br>{@code false}: 初始化失败
      */
-    public static boolean register(long minTime, long minDistance, OnLocationChangeListener listener) {
+    public static boolean register(long minTime, long minDistance, OnLocationChangeListener listener) throws  SecurityException{
         if (listener == null) return false;
         mLocationManager = (LocationManager) Utils.getContext().getSystemService(Context.LOCATION_SERVICE);
         mListener = listener;

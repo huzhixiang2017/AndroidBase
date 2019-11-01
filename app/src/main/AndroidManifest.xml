@@ -8,7 +8,9 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <!--杀死所有的后台服务进程-->
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
-
+    <!--GPS-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:name=".common.BaseApplication"
