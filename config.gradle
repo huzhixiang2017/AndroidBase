@@ -1,26 +1,30 @@
 
 /** 创建config.gradle，用于统一管理项目的依赖库 build.gradle + 所有模块 + 所有libs 下的配置和依赖  */
 
-def supportVersion = "29.0.2"
-
-
+def supportVersion = "28.0.0"
+def appcompatVersion = "1.0.0"
+def butterknifeVersion = "10.1.0"
 
 // ext 是什么?  https://www.jianshu.com/p/207c9f6f68c2
 ext {
     android = [//配置
-            applicationId    : "com.java.base",//当前SDK的编译版本
-            versionName      : "1.0",
-            versionCode      : 1,
-            compileSdkVersion: 29,//当前编译版本号
-            minSdkVersion    : 19,//最小API支持
-            targetSdkVersion : 29,//最大API支持
-            //构建工具的版本,在SDK Manager中安装选择版本，buildToolsVersion的版本需要>=CompileSdkVersion;高版本的build-tools 可以构建低版本编译的android程序；
-            buildToolsVersion:"29.0.2",
+                applicationId    : "com.java.base",//当前SDK的编译版本
+                versionName      : "1.0",
+                versionCode      : 1,
+                compileSdkVersion: 28,             //当前编译版本号
+                minSdkVersion    : 21,             //最小API支持
+                targetSdkVersion : 28,             //最大API支持
+                //构建工具的版本,在SDK Manager中安装选择版本，buildToolsVersion的版本需要>=CompileSdkVersion;高版本的build-tools 可以构建低版本编译的android程序；
+                buildToolsVersion: "28.0.0",
     ]
 
-
-    support = [//第三方依赖
-
+    //support第三方依赖
+    support = [   //得到宏定义字符串，要用双引号
+                  appcompatV7 : "androidx.appcompat:appcompat:${appcompatVersion}",
+                  appcompatV4 : "androidx.legacy:legacy-support-v4:${appcompatVersion}",
+                  butterknife : "com.jakewharton:butterknife:${butterknifeVersion}",
+                  butterknifeCompiler : "com.jakewharton:butterknife-compiler:${butterknifeVersion}",
+                  toast : "com.hjq:toast:8.0",
     ]
 
 }

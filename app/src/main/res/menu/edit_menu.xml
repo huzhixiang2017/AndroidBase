@@ -1,0 +1,31 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/toolbar_search"
+        android:title="Search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_del"
+        android:icon="@drawable/toolbar_delete"
+        android:title="Delete"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_warn"
+        android:icon="@drawable/toolbar_warn"
+        android:title="Warn"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/toolbar_settings"
+        android:orderInCategory="100"
+        android:title="Settings"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_down"
+        android:icon="@drawable/toolbar_down"
+        android:orderInCategory="100"
+        android:title="Down"
+        app:showAsAction="ifRoom" />
+</menu>
