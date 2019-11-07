@@ -4,35 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--<com.google.android.material.appbar.AppBarLayout-->
-        <!--android:id="@+id/layout_bar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:theme="@style/AppTheme.AppBarOverlay">-->
-
-        <!--<androidx.appcompat.widget.Toolbar-->
-            <!--android:id="@+id/toolbar"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="?attr/actionBarSize"-->
-            <!--app:layout_constraintEnd_toEndOf="parent"-->
-            <!--app:layout_constraintStart_toStartOf="parent"-->
-            <!--app:layout_constraintTop_toTopOf="parent"-->
-            <!--app:logo="@mipmap/ic_launcher"-->
-            <!--app:subtitle="子标题"-->
-            <!--app:title="标题"/>-->
-
-        <!--app:layout_scrollFlags="scroll|enterAlways|snap"-->
-
-    <!--androidx下的Toolbar坑太多谨慎  https://www.cnblogs.com/wenhanxiao/archive/2019/03/11/10513498.html-->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tool_bar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:elevation="4dp"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="@string/app_name"/>
-    <!--</com.google.android.material.appbar.AppBarLayout>-->
+    <include layout="@layout/activity_base_title" android:id="@+id/base_title"/>
 
     <com.java.base.views.main.AlphaRadioGroup
         android:id="@+id/radio_group"
@@ -42,6 +14,7 @@
         android:orientation="horizontal">
 
         <com.java.base.views.main.AlphaRadioButton
+            android:id="@+id/rb_message"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -58,6 +31,7 @@
             app:icon_width_default="25dp" />
 
         <com.java.base.views.main.AlphaRadioButton
+            android:id="@+id/rb_contact"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -73,6 +47,7 @@
             app:icon_width_default="25dp" />
 
         <com.java.base.views.main.AlphaRadioButton
+            android:id="@+id/rb_discover"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -88,6 +63,7 @@
             app:icon_width_default="25dp" />
 
         <com.java.base.views.main.AlphaRadioButton
+            android:id="@+id/rb_me"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -104,7 +80,7 @@
     </com.java.base.views.main.AlphaRadioGroup>
 
     <View
-        android:id="@+id/line"
+        android:id="@+id/main_line"
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_above="@id/radio_group"
@@ -114,7 +90,7 @@
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tool_bar"
-        android:layout_above="@id/line"/>
+        android:layout_below="@+id/base_title"
+        android:layout_above="@id/main_line"/>
 
 </RelativeLayout>

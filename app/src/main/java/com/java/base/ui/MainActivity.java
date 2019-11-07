@@ -1,32 +1,24 @@
 package com.java.base.ui;
 
-import android.os.Bundle;
 import android.os.SystemClock;
-import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.java.base.R;
-import com.java.base.common.BaseApplication;
+import com.java.base.adapter.MainPagerAdapter;
+import com.java.base.common.BaseActivity;
 import com.java.base.utils.ToastUtils;
+import com.java.base.views.main.AlphaRadioButton;
 import com.java.base.views.main.AlphaRadioGroup;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
   *
@@ -42,52 +34,54 @@ import butterknife.Unbinder;
   * @Version:        1.0
  */
 
-public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener, View.OnClickListener {
+public class MainActivity extends BaseActivity {
+    private static final String TAG = MainActivity.class.getSimpleName();
+    private MainPagerAdapter adapter;
+
+    private String[] title = new String[]{
+            "消息", "通讯录","发现","我的"
+    };
 
     @BindView(R.id.view_pager)
     public ViewPager viewPager;//使用注解后必须为public
     @BindView(R.id.radio_group)
     public AlphaRadioGroup alphaRadioGroup;
-    @BindView(R.id.tool_bar)
-    public Toolbar toolbar;
-
-    private Unbinder unbinder;
-    private SearchView search;
-    private BaseApplication application;
-
-    private String[] title = new String[]{
-           "消息", "通讯录","发现","我的"
-    };
+    @BindView(R.id.rb_message)
+    public AlphaRadioButton btMessage;
+    @BindView(R.id.rb_contact)
+    public AlphaRadioButton btContact;
+    @BindView(R.id.rb_discover)
+    public AlphaRadioButton btDiscover;
+    @BindView(R.id.rb_me)
+    public AlphaRadioButton btMe;
 
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        application = BaseApplication.getInstance();
-        //如果有使用黄油刀(控件注解功能)，请在这边加入即可
-        unbinder = ButterKnife.bind(this);
-
-        initView();
-        initData();
-        registerListener();
-
+    protected int getLayoutId() {
+        return R.layout.activity_main;
     }
 
 
-
-    private void initView() {
-        setSupportActionBar(toolbar);
+    @Override
+    public void initView() {
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true); //在ToolBar对象上启用返回钮
         }
-
     }
 
 
+    @Override
+    public void initData(){
+        List<Fragment> fragmentList = new ArrayList<>();
+        fragmentList.add(new FirstFragment());
+        fragmentList.add(new TwoFragment());
+        fragmentList.add(new ThreeFragment());
+        fragmentList.add(new TestFragment());
+        adapter = new MainPagerAdapter(getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, fragmentList);
+        viewPager.setAdapter(adapter);
+        alphaRadioGroup.setViewPager(viewPager);
 
-    private void initData(){
         alphaRadioGroup.showDot(1);//show the dot on bottomBar
         alphaRadioGroup.showDot(3);
         alphaRadioGroup.showUnreadCount(0, 9);//show the unreadCount on bottomBar
@@ -103,63 +97,17 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             }
         }).start();
 
-        List<TestFragment> list = new ArrayList<>();
-        for (int i = 0; i < alphaRadioGroup.getChildCount(); i++) {
-            TestFragment fragment = new TestFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString(TestFragment.CONTENT, title[i]);
-            fragment.setArguments(bundle);
-            list.add(fragment);
-        }
-
-        viewPager.setAdapter(new ChatPagerAdapter(getSupportFragmentManager(), list));
-        alphaRadioGroup.setViewPager(viewPager);
-    }
-
-    private void registerListener(){
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastUtils.showShortToastSafe(R.string.toast_back);
-                finish();
-            }
-        });
 
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-
-        }
-    }
 
 
-    /**
-     * androidx下的Toolbar https://www.cnblogs.com/wenhanxiao/archive/2019/03/11/10513498.html
-     * @param menu
-     * @return
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.edit_menu, menu);
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        search = (SearchView) searchItem.getActionView();
-        // 设置提交按钮是否可见（默认不可见）
-        search.setSubmitButtonEnabled(true);
-        // 设置左侧是否显示搜索图标（false默认不可见）
-        search.setIconifiedByDefault(true);
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    //设置监听 普通的Delete按钮
+    //设置监听 普通的Delete按钮等
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_del:
                 ToastUtils.showShortToastSafe(R.string.toast_delete);
-
                 break;
             case R.id.action_warn:
                 ToastUtils.showShortToastSafe(R.string.toast_warn);
@@ -170,7 +118,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     public boolean onQueryTextSubmit(String query) {
@@ -185,46 +132,11 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         return false;
     }
 
-    @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_BACK:
-                if (!search.isIconified()) {
-                    search.setIconified(true);
-                    return true;
-                }
-                break;
-        }
-        return super.onKeyUp(keyCode, event);
-    }
 
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbinder.unbind();
-    }
 
-
-
-
-    class ChatPagerAdapter extends FragmentPagerAdapter {
-
-        List<TestFragment> mData;
-
-        ChatPagerAdapter(FragmentManager fm, List<TestFragment> data) {
-            super(fm);
-            mData = data;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mData.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mData.size();
-        }
     }
 }

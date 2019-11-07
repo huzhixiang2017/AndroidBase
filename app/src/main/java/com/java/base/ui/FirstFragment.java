@@ -16,7 +16,7 @@ import com.java.base.utils.ToastUtils;
  * Created by frank on 2016/12/14.
  */
 
-public class TestFragment extends Fragment {
+public class FirstFragment extends Fragment {
 
     public final static String CONTENT = "content";
 
@@ -26,13 +26,14 @@ public class TestFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_test, container, false);
 //        String content = getArguments().getString(CONTENT);
 //        TextView textView = (TextView) view.findViewById(R.id.tv_content);
-//        textView.setText(content);
+//        textView.setText(content + "First");
+
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        ToastUtils.showShortToast("3");
+        ToastUtils.showShortToast("0");
     }
 }

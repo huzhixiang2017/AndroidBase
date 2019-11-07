@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -16,7 +15,7 @@ import com.java.base.utils.ToastUtils;
  * Created by frank on 2016/12/14.
  */
 
-public class TestFragment extends Fragment {
+public class ThreeFragment extends Fragment {
 
     public final static String CONTENT = "content";
 
@@ -33,6 +32,6 @@ public class TestFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ToastUtils.showShortToast("3");
+        ToastUtils.showShortToast("2");
     }
 }
