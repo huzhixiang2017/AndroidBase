@@ -122,7 +122,6 @@ android {
         oppo {}
         vivo {}
         _360 {}
-
         Beta {}     //测试版
         Alpha {}    //首发（第一版）
         Develop {}  //开发版
@@ -177,6 +176,14 @@ dependencies {
     // ButterKnife 注解库 https://www.cnblogs.com/SongYongQian/p/7967202.html
     implementation support.butterknife
     annotationProcessor support.butterknifeCompiler
-    //implementation support.toast  // 参考 吐司工具类：https://github.com/getActivity/ToastUtils
-
+    // 参考 吐司工具类：https://github.com/getActivity/ToastUtils
+//    implementation support.toast
+    //下拉刷新，上拉加载—Ultra-Pull-To-Refresh-With-Load-More  https://www.jianshu.com/p/28bf6d38e0ea
+    implementation support.refresh
+    //gif播放框架   implementation viewDependencies.gifview
+    implementation support.gif
+    //AndroidX RecycleView  https://cloud.tencent.com/developer/ask/216096/answer/332471
+    implementation support.recyclerview
+    // https://go.ctolib.com/xuehuayous-delegationadapter.html  https://www.jianshu.com/p/bd58c787a10f
+    implementation support.alibaba_vlayout
 }

@@ -2,6 +2,7 @@ package com.java.base.common;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,6 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 
 import com.java.base.R;
 import com.java.base.utils.ToastUtils;
@@ -31,42 +34,33 @@ import butterknife.Unbinder;
  * @UpdateRemark: 更新说明：
  * @Version: 1.0
  */
-public abstract class BaseActivity  extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public abstract class BaseActivity<DB extends ViewDataBinding>  extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private static final String TAG = BaseActivity.class.getSimpleName();
     private BaseApplication application;
     private Unbinder unbinder;
     public SearchView search;
+    public DB bindView;
 
-    @BindView(R.id.tool_bar)
-    public Toolbar toolbar;
+
+//    @BindView(R.id.tool_bar)
+//    public Toolbar toolbar;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         application = BaseApplication.getInstance();
-        setContentView(getLayoutId());
 
-        //控件注解，在setContentView之后
-        unbinder = ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
+        bindView = DataBindingUtil.setContentView(this, getLayoutId());
+        bindView.getRoot();
 
-        initView();
+        unbinder = ButterKnife.bind(this); //控件注解，在setContentView之后
+        initView(savedInstanceState);
         initData();
 
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastUtils.showShortToastSafe(R.string.toast_back);
-                finish();
-            }
-        });
-
-
-
-
     }
+
 
     /**
      * 获取布局 ID
@@ -75,7 +69,7 @@ public abstract class BaseActivity  extends AppCompatActivity implements SearchV
     /**
      * 初始化控件
      */
-    protected abstract void initView();
+    protected abstract void initView(Bundle savedInstanceState);
 
     /**
      * 初始化数据

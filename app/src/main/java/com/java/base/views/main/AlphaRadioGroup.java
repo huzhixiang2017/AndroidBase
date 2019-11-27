@@ -6,11 +6,14 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RadioGroup;
 
+import com.java.base.utils.LogUtils;
+
 /**
  * Created by frank on 2016/12/12.
  */
 
 public class AlphaRadioGroup extends RadioGroup implements ViewPager.OnPageChangeListener{
+    private static final String TAG = AlphaRadioGroup.class.getSimpleName();
     private ViewPager mViewPager;
 
     public AlphaRadioGroup(Context context) {
@@ -35,6 +38,7 @@ public class AlphaRadioGroup extends RadioGroup implements ViewPager.OnPageChang
                 public void onClick(View v) {
                     setClickViewChecked(position);//切换RadioButton
                     if(mViewPager != null)
+                        LogUtils.i(TAG,"onClick  position " + position);
                        mViewPager.setCurrentItem(position, false);//切换fragment
                 }
             });
@@ -56,6 +60,7 @@ public class AlphaRadioGroup extends RadioGroup implements ViewPager.OnPageChang
 
     @Override
     public void onPageSelected(int position) {
+        LogUtils.i(TAG,"onPageSelected position" + position);
         setSelectedViewChecked(position);
     }
 
