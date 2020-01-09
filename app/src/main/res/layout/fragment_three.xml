@@ -6,7 +6,7 @@
 
         <RelativeLayout
             android:orientation="vertical"
-            android:background="@color/royalblue"
+            android:background="@color/purple"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

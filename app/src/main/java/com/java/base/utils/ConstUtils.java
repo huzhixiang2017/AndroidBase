@@ -159,4 +159,15 @@ public class ConstUtils {
     public static final String REGEX_NEGATIVE_FLOAT       = "^-[1-9]\\d*\\.\\d*|-0\\.\\d*[1-9]\\d*$";
 
     /************** If u want more please visit http://toutiao.com/i6231678548520731137/ **************/
+
+
+    /******************** Json文件 ********************/
+    /**
+     * Home界面测试数据
+     */
+    public static final String JSON_FILE_CLASSIFY      = "classify.json";
+    /**
+     * 全国城市测试数据
+     */
+    public static final String JSON_FILE_PROVINCE      = "province.json";
 }

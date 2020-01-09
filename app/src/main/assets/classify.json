@@ -1,0 +1,263 @@
+[{
+  "object": [
+    {
+      "result": [
+        {
+          "code": "227",
+          "description": "口感非常好!",
+          "factoryName": "sd",
+          "factorySite": "dsds",
+          "imageNames": "banner_1525229860870.jpg,detail_1525229878388.jpg,list_1525229850562.png",
+          "ingredients": "ds",
+          "items": [
+            {
+              "sku": "2000",
+              "active": true,
+              "flavour": "甜"
+            }
+          ],
+          "maxPrice": 5,
+          "minPrice": 0.8,
+          "msrp":  39.9,
+          "name": "旺仔牛奶",
+          "originalPrice": 8,
+          "productCategory": {
+            "code": "1",
+            "name": "牛奶/饮料",
+            "imageNames": "2_15305003247092.jpg"
+          },
+          "retailPrice": 0.9,
+          "productionLicense": "ds",
+          "productStandards": "s",
+          "shelfLife": "dd",
+          "shortName": "促销牛奶",
+          "spec": "200mlX20",
+          "storageMethod": "dd",
+          "weight": 2,
+          "introductionMainTitle": "【牛奶我的最爱】—快来一起分享，为了测试字数，打多点字吧，好累好累好累好累好累好累！",
+          "introductionSubTitle": "【只是测试副标题】—，为了测试字数，打多点字吧，好累好累好累好累好累好累！",
+          "soldQuantity": 54,
+          "supplyPrice": 0.6
+        }
+      ],
+      "image": "https://pic2.zhimg.com/v2-f474e73c7aabf49a96cb39f68b81b6e1.jpg"
+    },
+
+    {
+      "result": [
+        {
+          "code": "227",
+          "description": "口感非常好!",
+          "factoryName": "sd",
+          "factorySite": "dsds",
+          "imageNames": "banner_1525229860870.jpg,detail_1525229878388.jpg,list_1525229850562.png",
+          "ingredients": "ds",
+          "items": [
+            {
+              "sku": "2000",
+              "active": true,
+              "flavour": "甜"
+            }
+          ],
+          "maxPrice": 5,
+          "minPrice": 0.8,
+          "msrp": 29.9,
+          "name": "旺旺乳酸菌饮品",
+          "originalPrice": 8,
+          "productCategory": {
+            "code": "1",
+            "name": "牛奶/饮料",
+            "imageNames": "2_15305003247092.jpg"
+          },
+          "retailPrice": 0.9,
+          "productionLicense": "ds",
+          "productStandards": "s",
+          "shelfLife": "dd",
+          "shortName": "促销牛奶",
+          "spec": "125mlX20",
+          "storageMethod": "dd",
+          "weight": 2,
+          "introductionMainTitle": "【牛奶我的最爱】—快来一起分享，为了测试字数，打多点字吧，好累好累好累好累好累好累！",
+          "introductionSubTitle": "【只是测试副标题】—，为了测试字数，打多点字吧，好累好累好累好累好累好累！",
+          "soldQuantity": 54,
+          "supplyPrice": 0.6
+        }
+      ],
+      "image": "https://pic1.zhimg.com/v2-d081c48015edde0e8065709f864ee474.jpg"
+    },
+
+    {
+      "result": [
+        {
+          "code": "227",
+          "description": "口感非常好!",
+          "factoryName": "sd",
+          "factorySite": "dsds",
+          "imageNames": "banner_1525229860870.jpg,detail_1525229878388.jpg,list_1525229850562.png",
+          "ingredients": "ds",
+          "items": [
+            {
+              "sku": "2000",
+              "active": true,
+              "flavour": "甜"
+            }
+          ],
+          "maxPrice": 5,
+          "minPrice": 0.8,
+          "msrp": 29.9,
+          "name": "旺旺乳酸菌饮品",
+          "originalPrice": 8,
+          "productCategory": {
+            "code": "1",
+            "name": "牛奶/饮料",
+            "imageNames": "2_15305003247092.jpg"
+          },
+          "retailPrice": 0.9,
+          "productionLicense": "ds",
+          "productStandards": "s",
+          "shelfLife": "dd",
+          "shortName": "促销牛奶",
+          "spec": "125mlX20",
+          "storageMethod": "dd",
+          "weight": 2,
+          "introductionMainTitle": "【牛奶我的最爱】—快来一起分享，为了测试字数，打多点字吧，好累好累好累好累好累好累！",
+          "introductionSubTitle": "【只是测试副标题】—，为了测试字数，打多点字吧，好累好累好累好累好累好累！",
+          "soldQuantity": 54,
+          "supplyPrice": 0.6
+        }
+      ],
+      "image": "https://pic1.zhimg.com/v2-d081c48015edde0e8065709f864ee474.jpg"
+    },
+
+    {
+      "result": [
+        {
+          "code": "227",
+          "description": "口感非常好!",
+          "factoryName": "sd",
+          "factorySite": "dsds",
+          "imageNames": "banner_1525229860870.jpg,detail_1525229878388.jpg,list_1525229850562.png",
+          "ingredients": "ds",
+          "items": [
+            {
+              "sku": "2000",
+              "active": true,
+              "flavour": "甜"
+            }
+          ],
+          "maxPrice": 5,
+          "minPrice": 0.8,
+          "msrp": 29.9,
+          "name": "旺旺乳酸菌饮品",
+          "originalPrice": 8,
+          "productCategory": {
+            "code": "1",
+            "name": "牛奶/饮料",
+            "imageNames": "2_15305003247092.jpg"
+          },
+          "retailPrice": 0.9,
+          "productionLicense": "ds",
+          "productStandards": "s",
+          "shelfLife": "dd",
+          "shortName": "促销牛奶",
+          "spec": "125mlX20",
+          "storageMethod": "dd",
+          "weight": 2,
+          "introductionMainTitle": "【牛奶我的最爱】—快来一起分享，为了测试字数，打多点字吧，好累好累好累好累好累好累！",
+          "introductionSubTitle": "【只是测试副标题】—，为了测试字数，打多点字吧，好累好累好累好累好累好累！",
+          "soldQuantity": 54,
+          "supplyPrice": 0.6
+        }
+      ],
+      "image": "https://pic1.zhimg.com/v2-d081c48015edde0e8065709f864ee474.jpg"
+    },
+
+    {
+      "result": [
+        {
+          "code": "227",
+          "description": "口感非常好!",
+          "factoryName": "sd",
+          "factorySite": "dsds",
+          "imageNames": "banner_1525229860870.jpg,detail_1525229878388.jpg,list_1525229850562.png",
+          "ingredients": "ds",
+          "items": [
+            {
+              "sku": "2000",
+              "active": true,
+              "flavour": "甜"
+            }
+          ],
+          "maxPrice": 5,
+          "minPrice": 0.8,
+          "msrp": 29.9,
+          "name": "旺旺乳酸菌饮品",
+          "originalPrice": 8,
+          "productCategory": {
+            "code": "1",
+            "name": "牛奶/饮料",
+            "imageNames": "2_15305003247092.jpg"
+          },
+          "retailPrice": 0.9,
+          "productionLicense": "ds",
+          "productStandards": "s",
+          "shelfLife": "dd",
+          "shortName": "促销牛奶",
+          "spec": "125mlX20",
+          "storageMethod": "dd",
+          "weight": 2,
+          "introductionMainTitle": "【牛奶我的最爱】—快来一起分享，为了测试字数，打多点字吧，好累好累好累好累好累好累！",
+          "introductionSubTitle": "【只是测试副标题】—，为了测试字数，打多点字吧，好累好累好累好累好累好累！",
+          "soldQuantity": 54,
+          "supplyPrice": 0.6
+        }
+      ],
+      "image": "https://pic1.zhimg.com/v2-d081c48015edde0e8065709f864ee474.jpg"
+    },
+
+    {
+      "result": [
+        {
+          "code": "227",
+          "description": "口感非常好!",
+          "factoryName": "sd",
+          "factorySite": "dsds",
+          "imageNames": "banner_1525229860870.jpg,detail_1525229878388.jpg,list_1525229850562.png",
+          "ingredients": "ds",
+          "items": [
+            {
+              "sku": "2000",
+              "active": true,
+              "flavour": "甜"
+            }
+          ],
+          "maxPrice": 5,
+          "minPrice": 0.8,
+          "msrp": 29.9,
+          "name": "旺旺乳酸菌饮品",
+          "originalPrice": 8,
+          "productCategory": {
+            "code": "1",
+            "name": "牛奶/饮料",
+            "imageNames": "2_15305003247092.jpg"
+          },
+          "retailPrice": 0.9,
+          "productionLicense": "ds",
+          "productStandards": "s",
+          "shelfLife": "dd",
+          "shortName": "促销牛奶",
+          "spec": "125mlX20",
+          "storageMethod": "dd",
+          "weight": 2,
+          "introductionMainTitle": "【牛奶我的最爱】—快来一起分享，为了测试字数，打多点字吧，好累好累好累好累好累好累！",
+          "introductionSubTitle": "【只是测试副标题】—，为了测试字数，打多点字吧，好累好累好累好累好累好累！",
+          "soldQuantity": 54,
+          "supplyPrice": 0.6
+        }
+      ],
+      "image": "https://pic1.zhimg.com/v2-d081c48015edde0e8065709f864ee474.jpg"
+    }
+
+
+  ]
+}]

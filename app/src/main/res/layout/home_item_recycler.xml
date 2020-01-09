@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+
+        <import type="android.view.View" />
+        <variable
+            name="model"
+            type="com.java.base.model.ClassifyDetailsModel" />
+    </data>
+
+    <RelativeLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px396"
+        android:id="@+id/home_dateils_item"
+        android:elevation="@dimen/px15">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/px78"
+            android:background="@drawable/shape_corner8_solid_white"
+            />
+
+        <!--添加阴影效果 用CardView包裹 android.support.v7.widget.CardView-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardv_classify"
+            android:background="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            app:cardElevation="@dimen/px15"
+            app:cardCornerRadius="@dimen/px30">
+
+            <com.java.base.views.RoundImageView
+                android:id="@+id/home_datails_img"
+                android:layout_width="@dimen/px315"
+                android:layout_height="@dimen/px315"
+                android:scaleType="centerCrop"
+                android:layout_centerVertical="true"
+                app:type="round"
+                android:src="@mipmap/ic_launcher"
+                android:padding="@dimen/px1"
+                android:elevation="@dimen/px15" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/home_datails_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/cardv_classify"
+            android:layout_marginLeft="@dimen/px30"
+            style="@style/App.Text.MainBody"
+            tools:text="旺仔牛奶"
+            android:text="@{model.shortName}"
+            android:layout_marginTop="@dimen/px30"
+            android:maxLines="1" />
+    
+        <TextView
+            android:id="@+id/classify_datails_describe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/home_datails_name"
+            android:layout_alignLeft="@id/home_datails_name"
+            style="@style/App.Text.Assist"
+            tools:text="口感比较好,很好,非常好!"
+            android:text="@{model.description}"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:singleLine="true" />
+    
+        <TextView
+            android:id="@+id/home_specification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/classify_datails_describe"
+            android:layout_alignLeft="@id/classify_datails_describe"
+            style="@style/App.Text.LAssist"
+            android:text="@{model.spec}"
+            tools:text="200mg*20" />
+    
+
+        <Button
+            android:id="@+id/home_shoppingcart"
+            android:layout_width="@dimen/px216"
+            android:layout_height="@dimen/px63"
+            android:layout_alignBottom="@id/cardv_classify"
+            android:layout_alignLeft="@id/home_specification"
+            android:text="@string/add_to_cart"
+            android:textSize="@dimen/px33"
+            android:textColor="@color/white"
+            android:background="@drawable/shape_corner8_solid_red"
+            android:paddingLeft="@dimen/px21"
+            android:paddingRight="@dimen/px21"
+            android:paddingTop="@dimen/px6"
+            android:paddingBottom="@dimen/px6" />
+    
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|left"
+            android:padding="@dimen/px9"
+            android:layout_above="@id/home_shoppingcart"
+            android:layout_alignLeft="@id/home_specification">
+
+            <TextView
+                android:id="@+id/classify_datails_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|bottom"
+                style="@style/App.Text.LargeRed"
+                android:text="¥"/>
+
+            <TextView
+                android:id="@+id/home_datails_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/App.Text.XXLargeRed18"
+                android:layout_alignBottom="@id/home_datails_price"
+                android:layout_toRightOf="@id/classify_datails_type"
+                android:gravity="center|bottom"
+                tools:text="739"
+                android:text="@{model.msrp}" />
+
+
+            <TextView
+                android:id="@+id/home_datails_make"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/home_datails_price"
+                android:layout_toRightOf="@id/home_datails_price"
+                android:layout_marginLeft="@dimen/px12"
+                tools:text="/赚5.0"
+                android:text="@{model.retailPrice}"
+                style="@style/App.Text.SmallRed" />
+
+            <TextView
+                android:id="@+id/classify_datails_nm_member"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/home_datails_price"
+                android:layout_toRightOf="@id/home_datails_make"
+                android:layout_marginLeft="@dimen/px12"
+                android:text="@{model.soldQuantity}"
+                tools:text="已售23"
+                style="@style/App.Text.LXAssist" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/home_datails_share"
+            android:layout_width="@dimen/px120"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            android:padding="@dimen/px24"
+            android:src="@mipmap/icon_shopcar_share"
+            android:layout_alignBottom="@+id/home_shoppingcart"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <com.lid.lib.LabelTextView
+            android:visibility="gone"
+            android:id="@+id/lb_label"
+            android:layout_width="@dimen/px180"
+            android:layout_height="@dimen/px180"
+            android:layout_alignParentRight="true"
+            android:paddingRight="@dimen/px30"
+            app:label_orientation="RIGHT_TOP"
+            app:label_text="9.5折"
+            app:label_textSize="@dimen/px39"
+            app:label_textColor="@color/white"
+            app:label_backgroundColor="@color/dodgerblue"
+            app:label_distance="@dimen/px45"
+            app:label_height="@dimen/px84" />
+    </RelativeLayout>
+
+</layout>

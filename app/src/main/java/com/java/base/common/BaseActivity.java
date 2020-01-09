@@ -36,7 +36,6 @@ import butterknife.Unbinder;
  */
 public abstract class BaseActivity<DB extends ViewDataBinding>  extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private static final String TAG = BaseActivity.class.getSimpleName();
-    private BaseApplication application;
     private Unbinder unbinder;
     public SearchView search;
     public DB bindView;
@@ -49,7 +48,6 @@ public abstract class BaseActivity<DB extends ViewDataBinding>  extends AppCompa
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        application = BaseApplication.getInstance();
 
         bindView = DataBindingUtil.setContentView(this, getLayoutId());
         bindView.getRoot();

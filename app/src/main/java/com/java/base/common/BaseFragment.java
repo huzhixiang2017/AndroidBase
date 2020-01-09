@@ -34,7 +34,8 @@ import butterknife.Unbinder;
 public abstract class BaseFragment<DB extends ViewDataBinding> extends Fragment {
     public FragmentActivity activity;
     private Unbinder unbinder;
-//    public DB bindView;
+    public DB bindView;
+    private View view;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -45,15 +46,14 @@ public abstract class BaseFragment<DB extends ViewDataBinding> extends Fragment 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = LayoutInflater.from(this.getContext()).inflate(getLayoutId(), null);
-//        bindView = DataBindingUtil.bind(view);
-
-//        bindView = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
+        view = LayoutInflater.from(this.getContext()).inflate(getLayoutId(), null);
+        bindView = DataBindingUtil.bind(view);
 
         unbinder = ButterKnife.bind(activity);
         initView(container, savedInstanceState);
         initData();
-        return view;
+
+        return bindView.getRoot();
     }
 
 

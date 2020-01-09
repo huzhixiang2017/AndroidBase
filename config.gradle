@@ -2,7 +2,7 @@
 /** 创建config.gradle，用于统一管理项目的依赖库 build.gradle + 所有模块 + 所有libs 下的配置和依赖  */
 
 def supportVersion = "28.0.0"
-def appcompatVersion = "1.0.0"
+def androidxVersion = "1.0.0"
 def butterknifeVersion = "10.1.0"
 
 // ext 是什么?  https://www.jianshu.com/p/207c9f6f68c2
@@ -21,16 +21,19 @@ ext {
 
     //support第三方依赖
     support = [   //得到宏定义字符串，要用双引号
-                  appcompatV7 : "androidx.appcompat:appcompat:${appcompatVersion}",
-                  appcompatV4 : "androidx.legacy:legacy-support-v4:${appcompatVersion}",
+                  appcompatV7 : "androidx.appcompat:appcompat:${androidxVersion}",
+                  appcompatV4 : "androidx.legacy:legacy-support-v4:${androidxVersion}",
                   butterknife : "com.jakewharton:butterknife:${butterknifeVersion}",
                   butterknifeCompiler : "com.jakewharton:butterknife-compiler:${butterknifeVersion}",
                   toast       : "com.hjq:toast:8.0",
                   refresh     : "in.srain.cube:ptr-load-more:1.0.6",
                   gif         : "pl.droidsonroids.gif:android-gif-drawable:1.2.7",
-                  recyclerview: "androidx.recyclerview:recyclerview:1.0.0",
+                  recyclerview: "androidx.recyclerview:recyclerview:${androidxVersion}",
                   alibaba_vlayout:"com.alibaba.android:vlayout:1.0.4@aar" ,// { transitive =true}
-
+                  cardview    : "androidx.cardview:cardview:${androidxVersion}",
+                  labelview   : "com.github.linger1216:labelview:v1.1.0",
+                  gson        : "de.gerdi-project:GSON:6.0.6",
+                  glide       :"com.github.bumptech.glide:glide:4.10.0",
 
     ]
 

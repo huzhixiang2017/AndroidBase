@@ -1,7 +1,9 @@
 <resources>
+    <!-- 控件基本样式-->
+    <style name="App"  >     </style>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="App.AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -9,12 +11,60 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/white</item>
-
-
     </style>
+
 
     <!--首页title-->
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
+
+    <!-- 根布局样式-->
+    <style name="App.Root">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#FEFFFF</item>
+    </style>
+
+    <!-- TextView基本样式-->
+    <style name="App.Text">
+        <item name="android:textColor">#383838</item>
+    </style>
+
+
+    <!--主要字体style-->
+    <style name="App.Text.MainBody">
+        <item name="android:textSize">@dimen/px39</item>
+        <item name="android:textColor">@color/base_color_gray6</item>
+    </style>
+    <style name="App.Text.LAssist">
+        <item name="android:textSize">@dimen/px36</item>
+        <item name="android:textColor">@color/base_color_gray1</item>
+    </style>
+    <style name="App.Text.LXAssist">
+        <item name="android:textSize">@dimen/px33</item>
+        <item name="android:textColor">@color/base_color_gray1</item>
+    </style>
+    <!--辅助字体style-->
+    <style name="App.Text.Assist">
+        <item name="android:textSize">@dimen/px39</item>
+        <item name="android:textColor">@color/base_color_gray1</item>
+    </style>
+    <style name="App.Text.SmallRed">
+        <item name="android:textSize">@dimen/px36</item>
+        <item name="android:textColor">@color/member_txt_red</item>
+    </style>
+    <style name="App.Text.AssistSmallRed">
+        <item name="android:textSize">@dimen/px30</item>
+        <item name="android:textColor">@color/member_txt_red</item>
+    </style>
+    <style name="App.Text.LargeRed">
+        <item name="android:textSize">@dimen/px45</item>
+        <item name="android:textColor">@color/member_txt_red</item>
+    </style>
+    <style name="App.Text.XXLargeRed18">
+        <item name="android:textSize">@dimen/px64</item>
+        <item name="android:textColor">@color/member_txt_red</item>
+    </style>
 </resources>

@@ -28,10 +28,21 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/base_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                />
+                android:layout_height="match_parent" />
 
         </com.java.base.views.RefreshPtrCustom>
+
+        <ImageView
+            android:id="@+id/home_return_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/all_return_top"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="-6sp"
+            android:padding="@dimen/sp10"
+            android:visibility="gone"
+            android:scaleType="centerCrop"/>
 
     </RelativeLayout>
 

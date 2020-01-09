@@ -159,7 +159,12 @@ android {
     }
 }
 
-
+allprojects {
+    repositories {
+        //jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -186,4 +191,11 @@ dependencies {
     implementation support.recyclerview
     // https://go.ctolib.com/xuehuayous-delegationadapter.html  https://www.jianshu.com/p/bd58c787a10f
     implementation support.alibaba_vlayout
+    implementation support.cardview
+    // 贴纸功能 https://www.jianshu.com/p/554cc57e1a34
+    implementation support.labelview
+    implementation support.gson
+    //图片加载框架 https://www.cnblogs.com/yishaochu/p/9865923.html
+    implementation support.glide
+
 }

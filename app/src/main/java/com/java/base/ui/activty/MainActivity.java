@@ -5,12 +5,10 @@ import android.os.SystemClock;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
 import com.java.base.R;
 import com.java.base.adapter.MainPagerAdapter;
 import com.java.base.common.BaseActivity;
@@ -21,10 +19,8 @@ import com.java.base.ui.fragment.ThreeFragment;
 import com.java.base.ui.fragment.TwoFragment;
 import com.java.base.utils.ToastUtils;
 import com.java.base.views.main.AlphaRadioGroup;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 
 /**
@@ -82,12 +78,14 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     public void initData(){
+
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(HomeFragment.newInstance());
         fragmentList.add(TwoFragment.newInstance());
         fragmentList.add(ThreeFragment.newInstance());
         fragmentList.add(TestFragment.newInstance());
         adapter = new MainPagerAdapter(getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, fragmentList);
+        viewPager.setOffscreenPageLimit(fragmentList.size());//ViewPager中Fragment切换过程不被销毁
         viewPager.setAdapter(adapter);
         alphaRadioGroup.setViewPager(viewPager);
 
