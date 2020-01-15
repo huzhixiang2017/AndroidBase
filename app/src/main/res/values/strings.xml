@@ -16,5 +16,6 @@
     <string name="toast_back">Back</string>
 
     <string name="add_to_cart">加入购物车</string>
+    <string name="end_view_text">猜你喜欢</string>
 
 </resources>

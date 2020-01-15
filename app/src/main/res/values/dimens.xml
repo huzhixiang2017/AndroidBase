@@ -2277,5 +2277,7 @@
     <dimen name="sp298">99.33dp</dimen>
     <dimen name="sp299">99.67dp</dimen>
     <dimen name="sp300">100.0dp</dimen>
+
+    <dimen name="sp510">170.0dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 </resources>

@@ -165,7 +165,7 @@ public class ConstUtils {
     /**
      * Home界面测试数据
      */
-    public static final String JSON_FILE_CLASSIFY      = "classify.json";
+    public static final String JSON_FILE_CLASSIFY      = "home_item_data.json";
     /**
      * 全国城市测试数据
      */

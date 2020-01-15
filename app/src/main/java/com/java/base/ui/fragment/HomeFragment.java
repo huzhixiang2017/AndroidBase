@@ -5,14 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
+import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.alibaba.android.vlayout.layout.StaggeredGridLayoutHelper;
 import com.java.base.R;
 import com.java.base.adapter.HomeAdapter;
+import com.java.base.adapter.HomeHeaderAdapter;
+import com.java.base.common.AllGoodsFooterAdapter;
 import com.java.base.common.BaseFragment;
 import com.java.base.common.BaseRecyclerViewAdapter;
+import com.java.base.common.GuessULikeAdapter;
 import com.java.base.databinding.HomeFragmentBinding;
 import com.java.base.model.bean.ClassifyDetailsBean;
 import com.java.base.utils.ConstUtils;
@@ -42,6 +48,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding> implements H
     private static final  String TAG = HomeFragment.class.getSimpleName();
     private final List<DelegateAdapter.Adapter> adapters = new LinkedList<>();
     private DelegateAdapter delegateAdapter;
+    private HomeHeaderAdapter headerAdapter;
     private HomeAdapter homeAdapter;
     private List<ClassifyDetailsBean> beanList = new ArrayList<>();
 
@@ -70,13 +77,19 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding> implements H
         mRefresh = bindView.ptrHomeRefresh;
         home_return_top = bindView.homeReturnTop;
 
+        vcRefreshInit();
+    }
+
+    @Override
+    protected void initData() {
         RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
         recyclerView.setRecycledViewPool(viewPool);
         viewPool.setMaxRecycledViews(0, 10);
 
-//        adapters.add(initClassifyDatailsHeaderAdapte(activity));
-        adapters.add(initClassifyDetailsAdapter());
-//        adapters.add(initAllGoodsFooterAdapter(activity));
+        adapters.add(initHomeHeaderAdapte());
+        adapters.add(initHomeAdapter());
+        adapters.add(initAllGoodsHeaderAdapter());
+        adapters.add(initGuessULikeAdapter());
 
         VirtualLayoutManager manager = new VirtualLayoutManager(activity);
         recyclerView.setLayoutManager(manager);
@@ -86,12 +99,19 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding> implements H
 
         recyclerView.addOnScrollListener(new RecyclerViewScrollListener(activity,home_return_top));
         recyclerView.smoothScrollToPosition(0);//点击回到顶部
-
-        vcRefreshInit();
     }
 
 
-    public BaseRecyclerViewAdapter initClassifyDetailsAdapter() {
+    public HomeHeaderAdapter initHomeHeaderAdapte() {
+        LinearLayoutHelper layoutHelper = new LinearLayoutHelper();
+        layoutHelper.setDividerHeight(1); //设置间隔高度
+        layoutHelper.setMarginBottom(1);//设置布局底部与下个布局的间隔
+        layoutHelper.setMargin(0, 0, 0, 0); //设置间距
+        headerAdapter = new HomeHeaderAdapter(getActivity(),layoutHelper,R.layout.home_item_header);
+        return headerAdapter ;
+    }
+
+    public BaseRecyclerViewAdapter initHomeAdapter() {
         if(homeAdapter != null){
             return homeAdapter;
         }
@@ -101,13 +121,26 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding> implements H
         homeAdapter = new HomeAdapter(getActivity(),layoutHelper,beanList,R.layout.home_item_recycler);
         bindView.baseRecycler.setAdapter(homeAdapter);
         homeAdapter.setActionInterface(this);
-
         return homeAdapter;
+    }
+
+    public AllGoodsFooterAdapter initAllGoodsHeaderAdapter() {
+        LinearLayoutHelper linearLayoutHelper = new LinearLayoutHelper();
+        linearLayoutHelper.setDividerHeight(1);
+        linearLayoutHelper.setMarginBottom(1);
+        linearLayoutHelper.setMargin(0, 0, 0, 0);
+        return new AllGoodsFooterAdapter(getActivity(), linearLayoutHelper,R.layout.item_end_view);
+    }
+
+    public GuessULikeAdapter initGuessULikeAdapter() {
+        StaggeredGridLayoutHelper gridLayoutHelper = new StaggeredGridLayoutHelper(2,8);
+        gridLayoutHelper.setMargin(13, 0,13, 4);
+        return  new GuessULikeAdapter(getActivity(), gridLayoutHelper,beanList,R.layout.item_guess_ulike_product);
     }
 
 
     private void vcRefreshInit() {
-        View footer= LayoutInflater.from(getActivity()).inflate(R.layout.view_loading_head,null);
+        View footer= LayoutInflater.from(getActivity()).inflate(R.layout.item_loading_head,null);
         GifImageView mGifFromAssets = footer.findViewById(R.id.gif_header_loading);
         mGifFromAssets.setImageResource(R.drawable.loading_footer);
         mRefresh.setFooterView(footer);
@@ -143,12 +176,6 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding> implements H
                 recyclerView.smoothScrollToPosition(0);
             }
         });
-    }
-
-
-    @Override
-    protected void initData() {
-
     }
 
 

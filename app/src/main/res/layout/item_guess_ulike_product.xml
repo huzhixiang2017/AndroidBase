@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="model"
+            type="com.java.base.model.GuessULikeModel" />
+    </data>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardv_ulike_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:cardCornerRadius="@dimen/sp18">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:id="@+id/goods_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sp39"
+                android:paddingBottom="@dimen/sp27"
+                android:paddingLeft="@dimen/sp27"
+                android:paddingRight="@dimen/sp27">
+
+                <TextView
+                    android:id="@+id/goods_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:text="@{model.goodsName}"
+                    android:textColor="#131010"
+                    android:textSize="@dimen/sp39"
+                    tools:text="【旺仔旺铺】特制和风柿DFDE旺仔旺铺】特制和" />
+
+                <ImageView
+                    android:id="@+id/iv_share"
+                    android:layout_width="@dimen/sp48"
+                    android:layout_height="@dimen/sp42"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="29dp"
+                    android:visibility="@{model.shareShow}"
+                    android:src="@drawable/icon_shopcar_share" />
+
+                <TextView
+                    android:id="@+id/goods_spec"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:layout_marginTop="@dimen/sp27"
+                    android:layout_below="@+id/goods_name"
+                    android:text="@{model.goodsSpec}"
+                    style="@style/App.Text.Assist"
+                    tools:text="115g" />
+                <TextView
+                    android:id="@+id/goods_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/goods_spec"
+                    android:layout_marginTop="@dimen/sp42"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:text="@{model.goodsPrice}"
+                    android:textColor="#F7493C"
+                    android:textSize="@dimen/sp36"
+                    android:textStyle="bold"
+                    tools:text="￥44.00/赚5.0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/goods_price"
+                    android:layout_alignBottom="@+id/goods_price"
+                    android:layout_marginLeft="@dimen/sp24"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:text="@{model.sellNum}"
+                    android:visibility="@{model.isMember?View.GONE:View.VISIBLE}"
+                    android:textColor="#999999"
+                    android:textSize="11sp"
+                    tools:text="已售：4" />
+
+                <!--android:visibility="@{model.isMember?View.VISIBLE:View.GONE}"-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/goods_price"
+                    android:layout_marginTop="@dimen/sp24"
+                    android:layout_weight="1"
+                    android:paddingBottom="@dimen/sp15"
+                    android:text="@{model.sellNum}"
+                    android:visibility="gone"
+                    android:textColor="#999999"
+                    android:textSize="11sp"
+                    tools:text="已售：4" />
+
+                <ImageView
+                    android:id="@+id/iv_addto_shopcar"
+                    android:layout_width="@dimen/sp63"
+                    android:layout_height="@dimen/sp63"
+                    android:layout_marginBottom="@dimen/sp39"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/icon_shopcar" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</layout>
+
+
+

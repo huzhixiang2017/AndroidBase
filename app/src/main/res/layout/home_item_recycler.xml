@@ -155,13 +155,13 @@
             android:layout_height="wrap_content"
             android:scaleType="center"
             android:padding="@dimen/px24"
-            android:src="@mipmap/icon_shopcar_share"
+            android:src="@drawable/icon_shopcar_share"
             android:layout_alignBottom="@+id/home_shoppingcart"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
         <com.lid.lib.LabelTextView
-            android:visibility="gone"
+            android:visibility="visible"
             android:id="@+id/lb_label"
             android:layout_width="@dimen/px180"
             android:layout_height="@dimen/px180"

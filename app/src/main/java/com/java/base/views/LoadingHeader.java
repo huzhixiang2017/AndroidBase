@@ -42,7 +42,7 @@ public class LoadingHeader extends FrameLayout implements PtrUIHandler {
     }
     //实例化控件
     private void init() {
-        FrameLayout container = (FrameLayout) LayoutInflater.from(getContext()).inflate(R.layout.view_loading_head, this, false);
+        FrameLayout container = (FrameLayout) LayoutInflater.from(getContext()).inflate(R.layout.item_loading_head, this, false);
         addView(container);
         mGifFromAssets=(GifImageView) container.findViewById(R.id.gif_header_loading);
         mGifFromAssets.setImageResource(R.drawable.loading_header);
